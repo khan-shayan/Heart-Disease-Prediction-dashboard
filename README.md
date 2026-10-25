@@ -1,41 +1,47 @@
 # Heart Disease Prediction Dashboard
 
-A Streamlit-based dashboard for training, comparing, and explaining machine learning models for heart disease prediction. The project is designed for both clinical and non-clinical staff to explore patient data, tune models, compare performance, and generate live predictions from new inputs.
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.10+" />
+  <img src="https://img.shields.io/badge/Streamlit-UI-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white" alt="Streamlit" />
+  <img src="https://img.shields.io/badge/Scikit--Learn-ML-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white" alt="Scikit-learn" />
+  <img src="https://img.shields.io/badge/XGBoost-LightGBM-9ACD32?style=for-the-badge" alt="XGBoost and LightGBM" />
+</p>
+
+A Streamlit-powered dashboard for heart disease prediction, built to help both clinical and non-clinical users explore data, train machine learning models, compare performance, and generate live predictions using patient attributes.
 
 ## Overview
 
-This application provides a complete workflow for heart disease classification:
+This project provides an end-to-end machine learning workflow for identifying cardiovascular risk from tabular health data. It includes:
 
-- Upload a CSV dataset
-- Select a target column and preprocess data
-- Explore data distributions and relationships
-- Train multiple classification models
-- Tune model hyperparameters with GridSearchCV
-- Compare model metrics and confusion matrices
-- Evaluate feature importance and SHAP explanations
-- Make live predictions using new patient values
+- Dataset upload and preprocessing
+- Exploratory Data Analysis (EDA)
+- Hyperparameter tuning
+- Multi-model comparison
+- Explainability with SHAP
+- Real-time prediction from custom inputs
+
+## Why this project?
+
+Heart disease prediction is a critical healthcare task, and using machine learning can support early screening and better clinical decision support. This dashboard makes model training and interpretation more accessible by putting the complete workflow in a lightweight, interactive web app.
 
 ## Features
 
-- Interactive UI built with Streamlit
-- Multiple ML models:
-  - Decision Tree
-  - Random Forest
-  - Gradient Boosting
-  - LightGBM
-  - XGBoost
-- Data preprocessing options:
-  - Remove null values
-  - Remove duplicates
-  - Fill missing values
-  - Encode categorical data
-  - Scale numeric features
-- Exploratory data analysis visualizations
-- Train and compare model performance
-- Hyperparameter tuning with GridSearchCV
-- Confusion matrices and classification reports
-- SHAP-based explainability
-- Live patient prediction interface
+- Upload CSV datasets directly from the browser
+- Select target columns and preprocess the data
+- Clean missing values, remove duplicates, and encode categorical features
+- Train multiple models with custom hyperparameters
+- Run GridSearchCV-based tuning for improved performance
+- Compare confusion matrices and classification reports
+- View feature importance and SHAP explanations
+- Generate live predictions with patient-level input values
+
+## Supported Models
+
+- Decision Tree
+- Random Forest
+- Gradient Boosting
+- LightGBM
+- XGBoost
 
 ## Tech Stack
 
@@ -54,36 +60,34 @@ This application provides a complete workflow for heart disease classification:
 
 ```text
 Heart-Disease-Prediction-dashboard/
-├── app.py                     # Streamlit dashboard application
-├── dataset_1.csv             # Sample heart disease dataset
-├── dataset_2.csv             # Additional sample heart disease dataset
-├── python_notebook.ipynb     # Jupyter notebook for analysis and experimentation
-├── README.md                 # Project documentation
-└── .gitignore                # Git ignore rules (if present in repo)
+├── app.py
+├── dataset_1.csv
+├── dataset_2.csv
+├── python_notebook.ipynb
+├── README.md
+└── .gitignore
 ```
 
-## Dataset
+## Dataset Requirements
 
-The dashboard supports CSV datasets containing medical and demographic variables commonly used for heart disease prediction, such as:
+The app is designed for tabular CSV data similar to standard heart disease datasets. Typical features include:
 
 - age
 - sex
-- chest pain type (cp)
-- resting blood pressure (trestbps)
-- cholesterol (chol)
-- fasting blood sugar (fbs)
-- resting ECG results (restecg)
-- maximum heart rate (thalach)
-- exercise-induced angina (exang)
+- chest pain type
+- resting blood pressure
+- cholesterol
+- fasting blood sugar
+- resting ECG
+- maximum heart rate
+- exercise-induced angina
 - oldpeak
 - slope
 - ca
 - thal
 - target
 
-This project was built around the classic heart disease classification dataset structure and can work with similar tabular health datasets.
-
-## Setup
+## Installation
 
 1. Clone the repository:
 
@@ -92,12 +96,12 @@ git clone https://github.com/khan-shayan/Heart-Disease-Prediction-dashboard.git
 cd Heart-Disease-Prediction-dashboard
 ```
 
-2. Create a virtual environment (optional but recommended):
+2. Create a virtual environment (recommended):
 
 ```bash
 python -m venv .venv
-source .venv/bin/activate    # On macOS/Linux
-.venv\Scripts\activate       # On Windows
+source .venv/bin/activate      # Linux/macOS
+.venv\Scripts\activate         # Windows
 ```
 
 3. Install dependencies:
@@ -106,52 +110,56 @@ source .venv/bin/activate    # On macOS/Linux
 pip install streamlit pandas numpy scikit-learn matplotlib seaborn xgboost lightgbm shap
 ```
 
-## Running the App
-
-Start the dashboard with:
+## Run the App
 
 ```bash
 streamlit run app.py
 ```
 
-Then open the local Streamlit URL displayed in the terminal (typically http://localhost:8501).
+After running the command, open the local URL shown in the terminal (usually http://localhost:8501).
 
 ## How to Use
 
-1. Upload a CSV file from the sidebar.
-2. Select the target column if needed.
-3. Choose preprocessing steps such as removing nulls, filling missing values, encoding categoricals, and scaling features.
-4. Explore the uploaded dataset using the visual analytics tabs.
-5. Go to the Train & Tune section and select the models to train.
-6. Run auto-tuning to find good parameter settings.
-7. Train the selected models with custom hyperparameters.
-8. Review model performance metrics, confusion matrices, and feature importance.
-9. Use the Explanation tab to inspect SHAP summaries.
-10. Use the Live Prediction tab to input patient values and predict heart disease risk.
+1. Upload a CSV dataset in the sidebar.
+2. Select the target column.
+3. Apply preprocessing options such as null handling, encoding, and scaling.
+4. Explore the dataset visually using the EDA tabs.
+5. Choose the models you want to train.
+6. Run tuning and train the models.
+7. Compare model performance in the results section.
+8. Use SHAP to understand predictions.
+9. Enter patient values in the Live Prediction tab to estimate risk.
 
-## Model Comparison
+## Example Workflow
 
-The app evaluates multiple classifiers and compares them using metrics such as:
+```text
+Upload data → Preprocess → Explore → Train models → Tune hyperparameters → Evaluate → Explain → Predict
+```
 
+## Model Evaluation
+
+The dashboard compares models using metrics such as:
+
+- Accuracy
 - Precision
 - Recall
 - F1-score
 - Confusion matrix
 - Weighted average metrics
 
-## Explanation and Interpretability
+## Explainability
 
-SHAP is used to explain predictions and help understand how individual features contribute to the model's output. This is especially useful in healthcare applications where interpretability helps build trust and support decisions.
+SHAP is integrated to help users interpret model decisions and understand which features influence heart disease risk predictions.
 
 ## Notes
 
-- The dashboard is built for educational and demonstration purposes.
-- Model performance depends on the quality and structure of the dataset.
-- For best results, use a cleaned dataset with a clearly defined target column.
+- Performance depends on the dataset quality and selected features.
+- Some datasets may require additional cleaning or feature engineering.
+- This project is intended for learning, research, and demonstration purposes.
 
 ## License
 
-This project does not currently specify a license in the repository. If you plan to distribute or reuse the code, consider adding an appropriate open-source license.
+This repository does not currently include a specified open-source license. If you plan to distribute or reuse the project commercially or publicly, consider adding an appropriate license file.
 
 ## Author
 
